@@ -28,7 +28,7 @@ Creas la imagen
 -docker build -t proyecto-miniblog:latest .
 
 ejecutas el contenedor
--docker run -d -p 8080:8080 --name proyecto-miniblog proyecto-miniblog:latest
+docker run -d -p 4510:4510 --name proyecto-miniblog proyecto-miniblog:latest
 
 Logs en tiempo real
 -docker logs -f proyecto-miniblog
