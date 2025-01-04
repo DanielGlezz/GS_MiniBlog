@@ -1,0 +1,42 @@
+PASOS PARA LA COMPILACION Y DESPLIEGUE
+
+-JDK 17 instalado.
+-Maven instalado y configurado (asegúrate de que el comando mvn funcione en la terminal).
+-Docker y Docker Compose instalados (opcional si planeas usar contenedores).
+-Acceso al ambiente donde se desplegará el servicio (puede ser local o remoto).
+-Base de datos configurada y corriendo (por ejemplo Oracle).
+
+-configuracion del properties del java se cambian si es que le agregas una propiedad o lo cambias 
+a donde apunte el ambiente deseado.
+
+En caso de usar localhost:
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
+spring.datasource.username=usuario
+spring.datasource.password=contraseña
+spring.jpa.hibernate.ddl-auto=update
+
+compilar el proyecto:
+mvn clean -DskipTests  // genera el jar en el archivo target
+
+si se desea ejecutarlo local:
+java -jar target/proyecto-miniblog-0.0.1-SNAPSHOT.jar
+
+
+para usar el docker y crear contenedor e imagen:
+
+Creas la imagen
+-docker build -t proyecto-miniblog:latest .
+
+ejecutas el contenedor
+-docker run -d -p 8080:8080 --name proyecto-miniblog proyecto-miniblog:latest
+
+Logs en tiempo real
+-docker logs -f proyecto-miniblog
+
+(Opcional) muchas veces se necesita los logs en texto para mas detalle
+-docker logs proyecto-miniblog > logs_proyecto-miniblog.txt
+
+
+
+
+
